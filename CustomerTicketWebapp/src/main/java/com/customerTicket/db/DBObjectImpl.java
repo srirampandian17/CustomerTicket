@@ -36,12 +36,14 @@ public class DBObjectImpl {
 
 	public  DB getDBObject(){
 		try{
+			if(db==null){
 				MongoClient mongoClient = new MongoClient( "ds033123.mongolab.com" , 33123 );
-			db = mongoClient.getDB( "customerticket" );
-	        // db = mongoClient.getDB(uri.getDatabase());
-			System.out.println("Connect to database sucredmartValidatorcessfully");
-			boolean auth = db.authenticate("redmartValidator","redmart".toCharArray());
-			System.out.println("Authentication: "+auth);      
+				db = mongoClient.getDB( "customerticket" );
+				// db = mongoClient.getDB(uri.getDatabase());
+				System.out.println("Connect to database sucredmartValidatorcessfully");
+				boolean auth = db.authenticate("redmartValidator","redmart".toCharArray());
+				System.out.println("Authentication: "+auth);    
+			}
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
