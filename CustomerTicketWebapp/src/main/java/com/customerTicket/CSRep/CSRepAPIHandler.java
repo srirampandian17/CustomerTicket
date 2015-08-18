@@ -21,6 +21,11 @@ public class CSRepAPIHandler {
 		while(cursor.hasNext()){
 			csrRepList.add((HashMap) cursor.next());
 		}
+		try{
+			cursor.close();
+		}catch(Exception ex){
+			
+		}
 		return csrRepList;
 	}
 	
@@ -32,7 +37,13 @@ public class CSRepAPIHandler {
 		BasicDBObject fields = new BasicDBObject();
 		fields.put("representative_id",repId);
 		DBCursor cursor = collection.find(fields);
-		return (HashMap)cursor.next();
+		HashMap dataMap=(HashMap)cursor.next();
+		try{
+			cursor.close();
+		}catch(Exception ex){
+			
+		}
+		return dataMap;
 
 	}
 	
@@ -43,6 +54,11 @@ public class CSRepAPIHandler {
 		fields.put("representative_id",repObject.getInt("representative_id"));
 		DBCursor cursor =collection.find(fields);
 		HashMap repMap=(HashMap)cursor.next();
+		try{
+			cursor.close();
+		}catch(Exception ex){
+			
+		}
 		ArrayList assignedCustomerList=(ArrayList)repMap.get("assigned_customers");//No I18n
 		if(action.equalsIgnoreCase("save")){
 			assignedCustomerList.add(customerObject.getInt("customer_id"));

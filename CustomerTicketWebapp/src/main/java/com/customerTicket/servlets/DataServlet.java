@@ -14,6 +14,7 @@ import com.customerTicket.CSRep.CSRepAPIHandler;
 import com.customerTicket.Customer.CustomerIssues;
 import com.customerTicket.JSONResponse.JsonResponse;
 import com.customerTicket.Ticket.TicketAPIHandler;
+import com.customerTicket.db.DBObjectImpl;
 
 public class DataServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request,
@@ -54,8 +55,12 @@ public class DataServlet extends HttpServlet{
 			if((request.getRequestURI()).contains("deleteCustomer")){
 				CustomerIssues.deleteCustomer(new JSONObject(request.getParameter("DATA_OBJECT")));
 			}
-			JsonResponse.getInstance().sendResponse(response, CustomerIssues.getOpenIssues());
+			HashMap dataMap= CustomerIssues.getOpenIssues();
+			dataMap.put("message",DBObjectImpl.getMessage());
+			JsonResponse.getInstance().sendResponse(response,dataMap);
 		}
 	}
+	
+	
 
 }

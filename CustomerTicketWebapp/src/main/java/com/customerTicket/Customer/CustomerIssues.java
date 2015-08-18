@@ -33,6 +33,11 @@ public class CustomerIssues {
 			}
 			issuesList.add(issuesMap);
 		}
+		try{
+			cursor.close();
+		}catch(Exception ex){
+			
+		}
 		dataMap.put("ISSUES_LIST",issuesList);
 		return dataMap;
 	}
@@ -67,6 +72,11 @@ public class CustomerIssues {
 			doc.append((String)key,customerMap.get((String)key));
 		}
 		collection.insert(doc);
+		try{
+			cursor.close();
+		}catch(Exception ex){
+			
+		}
 		return true;
 	}
 	
@@ -76,6 +86,12 @@ public class CustomerIssues {
 		BasicDBObject fields = new BasicDBObject();
 				fields.put("customer_id",customerId);
 		DBCursor cursor =collection.find(fields);
-		return (HashMap)cursor.next();
+		HashMap dataMap=(HashMap)cursor.next();
+		try{
+			cursor.close();
+		}catch(Exception ex){
+			
+		}
+		return dataMap;
 	}
 }

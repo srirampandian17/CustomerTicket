@@ -8,13 +8,15 @@ import com.customerTicket.JSONResponse.JsonResponse;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoClientURI;
 
 public class DBObjectImpl {
 	private static  com.mongodb.DB db=null;
 	volatile private static DBObjectImpl instance = null;
-
+    private static String exceptionmessage=null;
 	public static DBObjectImpl getInstance()
 	{
 		if(instance == null)
@@ -31,24 +33,28 @@ public class DBObjectImpl {
 		return instance;
 	}
 	private DBObjectImpl(){
-		
+
 	}
 
-	public  DB getDBObject(){
+	public  DB getDBObject() {
 		try{
 			if(db==null){
-				MongoClient mongoClient = new MongoClient( "ds033123.mongolab.com" , 33123 );
-				db = mongoClient.getDB( "customerticket" );
-				// db = mongoClient.getDB(uri.getDatabase());
+				String textUri = "mongodb://redmart:redmart@ds035643.mongolab.com:35643/customernew";
+				MongoClientURI uri = new MongoClientURI(textUri);
+				MongoClient mongoClient = new MongoClient(uri);
+				db = mongoClient.getDB( "customernew" );
+				db.authenticate("redmart", "redmart".toCharArray());
 				System.out.println("Connect to database sucredmartValidatorcessfully");
-				boolean auth = db.authenticate("redmartValidator","redmart".toCharArray());
-				System.out.println("Authentication: "+auth);    
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
+			exceptionmessage=ex.getMessage();
 		}
 		return db;
 	}
+	 public static String getMessage(){
+		 return exceptionmessage;
+	 }
 	//Used to create issues first
 	private static void initializeIssues() {
 		// To connect to mongodb server
@@ -137,7 +143,7 @@ public class DBObjectImpl {
 		}
 		return customerIssuesList;
 	}
-	
+
 	private static ArrayList<HashMap> getCustomerRepresntativesData(){
 		ArrayList<HashMap> customerIssuesList=new ArrayList<HashMap>();
 		try{
@@ -148,7 +154,7 @@ public class DBObjectImpl {
 			customerIssueMap.put("seat_location", "11WH14");
 			customerIssueMap.put("assigned_customers",new ArrayList());
 			customerIssueMap.put("customersCount",0);
-			
+
 			customerIssuesList.add(customerIssueMap);
 
 			customerIssueMap=new HashMap();

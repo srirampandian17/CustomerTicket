@@ -14,13 +14,19 @@
     <servlet-mapping>
          <servlet-name>issuesservlet</servlet-name>         
          <url-pattern>/getCustomerIsues/*</url-pattern>
+          <url-pattern>/CustomerTicketWebapp/getCustomerIsues/*</url-pattern>
    		<url-pattern>/deleteCustomer/*</url-pattern>
-   		 <url-pattern>/editLogTicketDetails/*</url-pattern>     
+   		   <url-pattern>/CustomerTicketWebapp/deleteCustomer/*</url-pattern>
+   		 <url-pattern>/editLogTicketDetails/*</url-pattern> 
+   		    <url-pattern>/CustomerTicketWebapp/editLogTicketDetails/*</url-pattern>    
          <url-pattern>/getLogTicketDetails/*</url-pattern>
+            <url-pattern>/CustomerTicketWebapp/getLogTicketDetails/*</url-pattern>
    		<url-pattern>/getTicketsList/*</url-pattern>
-   		      
+   		         <url-pattern>/CustomerTicketWebapp/getTicketsList/*</url-pattern>
          <url-pattern>/editTicket/*</url-pattern>
+            <url-pattern>/CustomerTicketWebapp/editTicket/*</url-pattern>
    		<url-pattern>/createTicket/*</url-pattern>
+   		   <url-pattern>/CustomerTicketWebapp/createTicket/*</url-pattern>
     </servlet-mapping>
   
     <!--

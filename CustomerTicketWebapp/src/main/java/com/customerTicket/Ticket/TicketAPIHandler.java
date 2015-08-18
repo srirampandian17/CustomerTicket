@@ -23,8 +23,13 @@ public class TicketAPIHandler {
 		BasicDBObject fields = new BasicDBObject();
 		fields.put("customer_id",(Integer)customer_id);
 		DBCursor cursor =coll.find(fields);
-		
-		return (HashMap)cursor.next();
+		HashMap dataMap=(HashMap)cursor.next();
+		try{
+			cursor.close();
+		}catch(Exception ex){
+			
+		}
+		return dataMap;
 	}
 	
 	public static String logTicket(JSONObject customerObject,JSONObject repObject,String ticket_status,String action){

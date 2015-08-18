@@ -20,6 +20,7 @@ CustomerTicket.CustomerIssuesClass.reopenClass({
 		    async: false,		    
    			success: function(dataJson) {
    				issuesList["issuesList"]=dataJson.ISSUES_LIST;	
+   				console.log(dataJson);
     		}
 		});
 		console.log("the dataList  is    "+issuesList);
