@@ -1,0 +1,86 @@
+<script type="text/x-handlebars" data-template-name="LogTicket">
+	<h1> Log a Ticket </h1>
+	<div class="divBox-1 admin">
+		<table class="reportConfigTable">
+		<tr>
+		<div class="alertConfigWrap">
+			<td width="50%">				
+                 <div class="Authentic f-left">
+                       <strong>CustomerName</strong>
+                 </div>
+                 </td><td>
+  		            <div class="f-left">
+        		         <label>{{customerData.name}}</label>
+                	</div>
+                    </td>
+                     </div>
+            </tr>        
+            <tr>
+            <div class="alertConfigWrap">
+			<td width="50%">
+				
+                        <div class="Authentic f-left">
+                            <strong>Date of Assignment</strong>
+                        </div>
+                        </td><td>
+                        <div class="f-left">
+                            <label>{{customerData.date}}</label>
+                            
+                        </div>
+                   
+             </td>
+              </div>
+            </tr>      
+            <tr>
+            <div class="alertConfigWrap">
+			<td width="50%">
+				
+                        <div class="Authentic f-left">
+                            <strong>Ticket Status</strong>
+                        </div>
+              </td><td>
+                        <div class="f-left">
+                            {{input type="text" id="ticket_status" value=ticket_status class="wth-42"}}
+                            
+                        </div>
+                    
+				 </td>
+				 </div>
+            </tr>   
+            <tr>
+            <div class="alertConfigWrap">
+				<td width="50%">
+				<div class="Authentic f-left">
+                            <strong>Rep Name</strong>
+                        </div>
+			 </td><td>
+				 {{view "select" content=repDataList optionValuePath="content.representative_id" optionLabelPath="content.name" selection=selectedCustomer}}
+			</td>
+			 </div>
+			 </tr>
+			 <tr>
+			 	<td width="50%">
+			         <div class="Authentic f-left">
+                          <strong>assigned Issues to {{selectedCustomer.name}}  </strong>
+                     </div>
+                 </td><td>   
+                        <div class="f-left">
+                            <label> {{selectedCustomer.customersCount}}</label>
+                        </div>
+                  </div>
+			 </td>
+			 
+			 </tr>
+		</table>
+		
+		<table class="reportConfigTable">
+                <td >
+                    <div class="btnBlocks alert-btn-box clear" style="width:auto">
+                        <input type="button" {{action createTicket }} class="save" value="Save"/>
+                        <input type="button" class="cancel" value="Cancel"/>
+                    </div>
+                </td>
+              
+            </table>   
+	</div>
+</script>

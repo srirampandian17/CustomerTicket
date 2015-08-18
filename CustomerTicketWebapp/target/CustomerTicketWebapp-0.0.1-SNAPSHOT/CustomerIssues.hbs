@@ -1,0 +1,40 @@
+<script type="text/x-handlebars" data-template-name="CustomerIssues">
+<h1> Customer Issues </h1>
+<table style="width:100%" class="reportConfigTable">
+	<tr>
+		  <th  >ID</th>
+		  <th  >DESCRIPTION</th>
+ 		  <th   >NAME</th>
+  		  <th   >LOCATION</th>
+  		  <th   >STATUS</th>
+  		  <th   >ACTION</th>
+  	</tr>
+</tr>
+	{{#each customer in issuesList}}
+		<tr>
+		<td >{{customer.customer_id}}</td>
+  			<td >{{customer.description}}</td>
+  			<td>{{customer.name}}</td>
+  			<td>{{customer.location}}</td>
+  			<td>{{customer.ticket_status}}</td>
+  			{{#if customer.statusClosed}}
+  				<td >
+  					<ul><li>
+  						<button>
+	  					<label {{action "deleteCustomer" customer.customer_id}}>DELETE</label>
+  						</button>
+  					</li></ul>
+  				</td>
+  			{{else}}
+  				<td >
+  					<ul><li>
+  					<button>
+	  					<label {{action "logTicket" customer.customer_id}}>LOG Ticket</label>
+  						</button>
+  					</li></ul>
+  				</td>
+  			{{/if}}
+		</tr>
+	{{/each}}
+</table>
+</script>

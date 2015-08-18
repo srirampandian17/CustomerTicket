@@ -1,0 +1,18 @@
+<script type="text/x-handlebars" data-template-name="application">
+<table ><tr>
+    <td width="40%">
+    	
+		<div style="color:#0000FF" class="divBox-1 admin">
+			
+			<ul>
+				<li>{{#link-to 'TicketList'}}TicketList{{/link-to}}</li>
+				<li>{{#link-to 'CustomerIssues'}}Customer Issues{{/link-to}}</li>
+			</ul>
+		</div>
+	</td>
+	<td>
+		{{outlet 'contentBar'}}
+	</td>
+	</tr>
+</table>
+</script>

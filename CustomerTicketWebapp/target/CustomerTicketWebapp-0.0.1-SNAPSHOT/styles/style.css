@@ -1,0 +1,54 @@
+/* CSSTerm.com Simple CSS menu */
+.menu_simple ul {
+margin: 0;
+padding: 0;
+width:185px;
+list-style-type: none;
+}
+.menu_simple ul li a {
+text-decoration: none;
+color: white;
+padding: 10.5px 11px;
+background-color: #005555;
+display:block;
+}
+.menu_simple ul li a:visited {
+color: white;
+}
+.menu_simple ul li a:hover, .menu_simple ul li .current {
+color: white;
+background-color: #5FD367;
+}
+
+body {
+	font: normal 11px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #4f6b72;
+	background: #E6EAE9;
+}
+
+a {
+	color: #c75f3e;
+}
+
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}

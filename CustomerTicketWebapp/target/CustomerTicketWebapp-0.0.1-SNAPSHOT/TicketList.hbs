@@ -1,0 +1,61 @@
+<script type="text/x-handlebars" data-template-name="TicketList">
+<h1> status of all tickets so far </h1>
+	
+	<table class="reportConfigTable">
+		<tr>
+			<th>
+				STATUS
+			</th>
+						<th>
+						CUSTOMER_NAME
+			</th>
+						<th>
+						REP NAME
+			</th>
+						<th>
+						ACTION
+			</th>
+		</tr>	
+		{{#each ticket in ticketsList}}			
+			<tr>
+			
+				<td>
+                        <div >
+                          <label>{{ticket.ticket_status}}</label>
+                        </div>
+			
+			
+              </td><td>
+                        <div >
+                            <label>{{ticket.customer_name}}</label>
+                            
+                        </div>
+              </td>
+              <td>
+                        <div >
+                            <label>{{ticket.representative_name}}</label>
+                            
+                        </div>
+              </td>
+              <td >
+              		{{#if ticket.status_closed}}
+  					<ul><li>
+  					     <button>
+	  						<label >CLOSED</label>
+  						</button>
+  					</li></ul>
+  					{{else}}
+  						<ul><li>
+  					     <button>
+	  						<label {{action "editTicket" ticket.customer_id ticket.representative_id}}>EDIT</label>
+  						</button>
+  					</li></ul>
+  					{{/if}}
+  				</td>
+			</tr>
+			
+			
+		{{/each}}
+	</table>
+
+</script>

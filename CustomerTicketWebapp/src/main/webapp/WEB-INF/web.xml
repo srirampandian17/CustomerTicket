@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>CustomerTicketWebapp</display-name>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <servlet-name>issuesservlet</servlet-name>
+        <servlet-class>com.customerTicket.servlets.DataServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+         <servlet-name>issuesservlet</servlet-name>         
+         <url-pattern>/getCustomerIsues/*</url-pattern>
+   		<url-pattern>/deleteCustomer/*</url-pattern>
+   		 <url-pattern>/editLogTicketDetails/*</url-pattern>     
+         <url-pattern>/getLogTicketDetails/*</url-pattern>
+   		<url-pattern>/getTicketsList/*</url-pattern>
+   		      
+         <url-pattern>/editTicket/*</url-pattern>
+   		<url-pattern>/createTicket/*</url-pattern>
+    </servlet-mapping>
+  
+    <!--
+    <security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Wildcard means whole app requires authentication</web-resource-name>
+			<url-pattern>/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+
+		<auth-constraint>
+			<role-name>tomcat</role-name>
+		</auth-constraint>
+
+		
+	</security-constraint>
+
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.html</form-login-page>
+			<form-error-page>/login-failed.html</form-error-page>
+		</form-login-config>
+	</login-config>
+	-->
+	
+	
+</web-app>
